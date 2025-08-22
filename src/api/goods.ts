@@ -8,12 +8,19 @@ export function getAll(): Promise<Good[]> {
 }
 
 export const get5First = () => {
-  return getAll().then(goods => {
-    return [...goods]
-      .sort((a, b) => a.name.localeCompare(b.name))
+  return getAll()
+    .then(goods => {
+      return [...goods]
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .slice(0, 5);
+    })
+    .catch(error => {
+      /* eslint-disable no-console */
+      console.error('Error fetching first 5 goods:', error);
 
-      .slice(0, 5);
-  });
+      return [];
+      /* eslint-disable no-console */
+    });
 };
 
 export const getRedGoods = () => {
