@@ -17,7 +17,17 @@ export const App: React.FC = () => {
       <button
         type="button"
         data-cy="all-button"
-        onClick={() => goodsAPI.getAll().then(setGoods)}
+        onClick={() =>
+          goodsAPI
+            .getAll()
+            .then(setGoods)
+            .catch(error => {
+              /* eslint-disable no-console */
+              console.error('Error loading all goods:', error);
+              alert('Failed to load goods. Please try again later.');
+              /* eslint-disable no-console */
+            })
+        }
       >
         Load all goods
       </button>
@@ -25,7 +35,17 @@ export const App: React.FC = () => {
       <button
         type="button"
         data-cy="first-five-button"
-        onClick={() => goodsAPI.get5First().then(setGoods)}
+        onClick={() =>
+          goodsAPI
+            .get5First()
+            .then(setGoods)
+            .catch(error => {
+              /* eslint-disable no-console */
+              console.error('Error loading first five goods:', error);
+              alert('Failed to load first five goods. Please try again later.');
+              /* eslint-disable no-console */
+            })
+        }
       >
         Load 5 first goods
       </button>
@@ -33,7 +53,17 @@ export const App: React.FC = () => {
       <button
         type="button"
         data-cy="red-button"
-        onClick={() => goodsAPI.getRedGoods().then(setGoods)}
+        onClick={() =>
+          goodsAPI
+            .getRedGoods()
+            .then(setGoods)
+            .catch(error => {
+              /* eslint-disable no-console */
+              console.error('Error loading red goods:', error);
+              alert('Failed to load red goods. Please try again later.');
+              /* eslint-disable no-console */
+            })
+        }
       >
         Load red goods
       </button>
